@@ -1,0 +1,5 @@
+- Create a script that configures the managed servers as repository clients to the repository server that you have set up in the previous task.
+  This script must ad-hoc commands, and perform the following tasks:
+    - Disable any currently existing repository
+    - Enable access to the BaseOS repository on control.example.com
+    - Enable access to the AppStream repository on control.example.com

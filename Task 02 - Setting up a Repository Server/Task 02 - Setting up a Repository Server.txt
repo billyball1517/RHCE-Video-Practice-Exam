@@ -1,0 +1,6 @@
+- Create a playbook with the name setupreposerver.yml to set up the control host as a repository host.
+  Make sure this host meets the following requirements, which all must be done by the playbook.
+    - The RHEL 8 installation ISO must be loop mounted on the directory /var/ftp/repo
+    - The firewalld service is disabled
+    - The vsftpd service is started as well as enabled, and allows anonymous user access to the /var/ftp/repo directory.
+    

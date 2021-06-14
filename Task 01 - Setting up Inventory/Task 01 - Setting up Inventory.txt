@@ -1,8 +1,8 @@
-Task 1: Setting up Inventory
 - Configure the control host with a static inventory, as well as the ansible.cfg configuration file. 
   In the static inventory, configure the following host groups:
     - Group test with ansible1.example.com as a member
     - Group dev with ansible2.example.com as a member
     - Group prod with ansible3 and ansible4 as a member
     - A group servers, with groups dev and prod as a member
-    - Ensure that hosts can be reached through their FQDN, but also by using the short name (so: ansible1.example.com as well as ansible1)
+    - Ensure that hosts can be reached through their FQDN, but also by using the short name
+      (so: ansible1.example.com as well as ansible1)
