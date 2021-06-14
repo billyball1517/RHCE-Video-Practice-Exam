@@ -1,6 +1,8 @@
 - To work through this exam, you need a total of 5 servers running RHEL 8
     - One server needs to be configured as control host
-    - The other 4 servers are configured as managed servers, using the names ansible1.example.com thru ansible4.example.com. The IP addresses used on the managed servers are not important, you can pick anything that matches your configuration. Make sure the servers meet the following requirements:
+    - The other 4 servers are configured as managed servers, using the names ansible1.example.com thru ansible4.example.com.
+      The IP addresses used on the managed servers are not important, you can pick anything that matches your configuration.
+      Make sure the servers meet the following requirements:
         - 1 GB of RAM
         - 20 GB disk space on the primary disk /dev/sda
         - 5 GB disk space on the secondary disk /dev/sdb which only exists on ansible1 and ansible 3
