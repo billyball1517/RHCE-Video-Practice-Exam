@@ -1,0 +1,24 @@
+- Create a playbook to set up ansible1.example.com as a web server.
+  Use another playbook to install wget and elinks on ansible2 and ansible3.
+  For the playbooks, use the following instructions:
+    - Create a host group webservers and a host group webclients to run the playbooks on the appropriate hosts.
+    - Provide a sample vhost.conf file as a Jinja2 template.
+      Copy it to the web/templates directory and ensure it is copied to all web servers.
+      Use variables and/or facts to ensure the local hostname is used in the name of the vhost file, as well as all references to the local host.
+    - Define the following variables and use them while setting up the web servers:
+        - web_package       httpd
+        - web_service       httpd
+        - web_config_file   /etc/httpd/conf/httpd.conf
+        - firewall_service  httpd
+    - Ensure that the web server package is installed
+    - Ensure that the service is enabled and started
+    - Open a port in the firewalld firewall
+    - Copy the httpd.conf template file, using the following properties:
+        - owner: root
+        - group: root
+        - permission mode: 0644
+        - SELinux context: httpd_config_t
+    - Use a handler to restart the web server after copying the configuration file
+    - Create a playbook that sets up the web-client machines and installs curl and wget on them
+    - Create a generic playbook with the name "web" which you can use to run both playbooks by using includes or imports
+    

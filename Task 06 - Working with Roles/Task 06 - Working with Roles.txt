@@ -1,0 +1,6 @@
+- Create a custom role to configure SSH. Make sure that it contains the following elements:
+    - A template file for the sshd_config, where the SSH port, AllowedUsers, and PermitRoot parameters are managed through variables (which must be set when calling the role from the playbook)
+- Create a playbook that calls the role. Before calling the role, the playbook should ensure that SELinux is in enforcing state.
+  Further, the playbook must define variables to set the SSH port to 2022, and AllowedUsers to the user Ansible.
+- Ensure the role is only called when the OS family is set to RedHat
+- Also ensure that the firewall is opened, and the appropriate SELinux context is set on the port

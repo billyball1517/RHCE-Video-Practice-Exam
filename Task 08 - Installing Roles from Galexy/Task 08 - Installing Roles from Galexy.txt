@@ -1,0 +1,4 @@
+- Write a playbook with the name galaxyroles.yml. This playbooks should meet the following requirements:
+    - Use a requirements file to install the geerlingguy.redis and geerlingguy.nginx roles
+    - Make sure the current version of the role is installed, but if a newer version becomes available, this will NOT automatically be installed
+- Configure the playbook such that after running it, redis as well as nginx are available on ansible4.example.com

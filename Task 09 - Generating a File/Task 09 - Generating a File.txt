@@ -1,0 +1,6 @@
+- Write a playbook that generates the motd file using a template. The motd file should write a welcome message, and a small report that lists the following items:
+    - System memory:
+    - Processor count:
+    - Primary disk size:
+    - Secondary disk size:
+- The playbook should use facts to fill in the appropriate values. If the secondary disk is not available, the secondary disk size should be set to NOT AVAILABLE

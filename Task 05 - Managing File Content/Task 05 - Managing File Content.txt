@@ -1,0 +1,2 @@
+- Use an automated solution to create the contents of the /etc/hosts file on all manageed hosts based on information that was found from the inventory
+- Tip! Use Templates and Ansible Facts

@@ -1,0 +1,5 @@
+- Create a script with the name setuphosts.sh that uses ad hoc commands to complete configuration on the managed servers. This includes:
+    - Installing Python
+    - Creating a user with the name ansible
+    - Creating a sudo configuration that allows user ansible to run tasks with root privileges
+    - As the last command in this script, an ad-hoc command should be used to call the appropriate module to test connectivity to the remote hosts.
