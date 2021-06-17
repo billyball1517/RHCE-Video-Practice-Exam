@@ -1,0 +1,41 @@
+---
+- name: Setup the repo directory
+  hosts: localhost
+  vars:
+    ansible_sudo_pass: password
+  tasks:
+  - name: Create directory
+    file:
+      path: /var/ftp/repo
+      state: directory
+
+  - name: Mount DVD with correct SELinux file context
+    mount:
+      path: /var/ftp/repo
+      src: /dev/sr0
+      opts: loop,context=system_u:object_r:public_content_t:s0
+      fstype: iso9660
+      state: mounted
+
+  - name: Disable firewalld service
+    service:
+      name: firewalld
+      state: stopped
+      enabled: no
+
+  - name: Install FTP server
+    yum:
+      name: vsftpd
+      state: latest
+
+  - name: Enable anonymous user access to the repo directory
+    lineinfile:
+      dest: /etc/vsftpd/vsftpd.conf
+      regexp: "^anonymous_enable=*"
+      line: "anonymous_enable=YES"
+
+  - name: Restart FTP server
+    service:
+      name: vsftpd
+      state: restarted
+      enabled: yes
