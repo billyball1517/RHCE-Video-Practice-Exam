@@ -1,0 +1,7 @@
+---
+- name: copy sshd_config file
+  template:
+    src: templates/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    force: yes
+  notify: restart sshd
