@@ -1,0 +1,28 @@
+---
+- name: configure SSH
+  hosts: all
+  vars:
+    ssh_port: 2022
+    allow_users: "ansible"
+    permit_root: "no"
+  tasks:
+    - include_role:
+        name: sshrole
+      when: "ansible_facts['os_family'] == 'RedHat'"
+    - name: install packages
+      yum:
+        name: policycoreutils-python-utils
+        state: latest
+    - name: set SELinux port context
+      seport:
+        ports: "{{ ssh_port }}"
+        proto: tcp
+        setype: ssh_port_t
+        state: present
+    - name:
+      firewalld:
+        port: "{{ ssh_port }}/tcp"
+        permanent: yes
+        immediate: yes
+        state: enabled
+      ignore_errors: yes
