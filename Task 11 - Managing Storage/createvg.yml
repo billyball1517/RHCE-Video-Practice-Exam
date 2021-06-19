@@ -1,0 +1,29 @@
+---
+- name: setup partitions on sdb for ansible1
+  hosts: ansible1.example.com
+  tasks:
+  - name: create a partition
+    parted:
+      device: /dev/sdb
+      number: 1
+      state: present
+      part_end: 1GiB
+
+- name: setup partition on sdb for ansible3
+  hosts: ansible3.example.com
+  tasks:
+  - name: create a partition
+    parted:
+      device: /dev/sdb
+      number: 1
+      state: present
+      part_end: 3GiB
+
+- name: setup volume group
+  hosts: all
+  tasks:
+  - name: setup volume group
+    lvg:
+      vg: vgdata
+      pvs: /dev/sdb1
+    when: ansible_devices.sdb is defined
