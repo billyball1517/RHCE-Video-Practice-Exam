@@ -1,0 +1,8 @@
+---
+- name: configure galaxy roles
+  hosts: ansible4.example.com
+  tasks:
+    - include_role:
+        name: redis
+    - include_role:
+        name: nginx
