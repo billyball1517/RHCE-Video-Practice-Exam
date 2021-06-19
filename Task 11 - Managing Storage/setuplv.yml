@@ -9,4 +9,4 @@
       size: "2000m"
     ignore_errors: yes
     register: result
-# in the assignment he says to cretae a custom error message but I think that's stupid as the default message already gives that info. Also I don't think that's on the exam but who knows.
+# in the assignment he says to cretae a custom error message but I think that's stupid as the default message already gives that info.
