@@ -1,1 +1,64 @@
+---
+- name: Setup Webserver
+  hosts: webservers
+  vars:
+    web_package: httpd
+    web_service: httpd
+    web_config_file: /etc/httpd/conf/httpd.conf
+    firewall_service: http
+  tasks:
+
+  - name: install packages
+    yum:
+      name:
+      - "{{ web_package}}"
+      - policycoreutils-python-utils
+      state: latest
+
+  - name: start and enable httpd
+    service:
+      name: "{{ web_service}}"
+      state: started
+      enabled: true
+
+  - name:
+    firewalld:
+      service: "{{firewall_service}}"
+      permanent: yes
+      immediate: yes
+      state: enabled
+
+  - name: copy the httpd config file
+    copy:
+      src: httpd.conf
+      dest: "{{ web_config_file }}"
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+      - restart httpd
+
+  - name: install vhost config file
+    template:
+      src: vhost.conf.j2
+      dest: "/etc/httpd/conf.d/{{ ansible_hostname }}.conf"
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+      - restart httpd
+  - name: set se file context on httpd config file
+    sefcontext:
+      target: "{{ web_config_file }}"
+      setype: httpd_config_t
+      state: present
+
+  - name: Apply new SELinux file context to filesystem
+    command: "restorecon -rv {{ web_config_file }}"
+
+  handlers:
+  - name: restart httpd
+    service:
+      name: httpd
+      state: restarted
 

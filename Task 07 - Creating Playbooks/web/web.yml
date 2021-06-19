@@ -1,1 +1,6 @@
+---
+- name: import webservers
+  import_playbook: webservers.yml
 
+- name: import webclients
+  import_playbook: webclients.yml

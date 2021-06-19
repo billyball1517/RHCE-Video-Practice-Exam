@@ -1,1 +1,11 @@
+---
+- name: set up web clients
+  hosts: webclients
+  tasks:
+  - name: install packages
+    yum:
+      name:
+      - wget
+      - curl
+      state: latest
 
