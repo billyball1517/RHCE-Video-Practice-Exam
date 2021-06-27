@@ -8,7 +8,7 @@
       lv: lvdata
       size: "2000m"
     register: result
-    when: ansible_devices.sdb is defined and ansible_lvm.vgs.vgdata.size_g >= "2.00"
+    when: ansible_lvm.vgs.vgdata is defined and ansible_lvm.vgs.vgdata.size_g >= "2.00"
   - fail:
       msg: vgdata does not exist
     when: ansible_lvm.vgs.vgdata is not defined
