@@ -7,7 +7,11 @@
       vg: vgdata
       lv: lvdata
       size: "2000m"
-    ignore_errors: yes
     register: result
-# in the assignment he says to cretae a custom error message but I think that's stupid as the default message already gives that info.
-# also the example he gives in the video course dosn't work so whatever
+    when: ansible_devices.sdb is defined and ansible_lvm.vgs.vgdata.size_g >= "2.00"
+  - fail:
+      msg: vgdata does not exist
+    when: ansible_lvm.vgs.vgdata is not defined
+  - fail:
+      msg: insufficient size
+    when: ansible_lvm.vgs.vgdata.size_g <= "2.00"
