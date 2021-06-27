@@ -1,7 +1,7 @@
 - Write a playbook with the name createvg.yaml.
   It should create a 1GiB partition /dev/sdb1 on ansible1, and a 3 GiB partition /dev/sdb1 on ansible3.
   Next, it should setup a volume group on all hosts on which the disk /dev/sdb is defined
-- Write a playbook setuplv.tml that configures an LVM volume with the name lvdata in the vgdata volume group.
+- Write a playbook setuplv.yml that configures an LVM volume with the name lvdata in the vgdata volume group.
   The size of the volume must be 2000 MiB and the playbook should run on all servers.
   If the volume group vgdata does not exist, the playbook must show the message "vgdata does not exist".
   If the requested size is not available, the playbook must return the message "insufficient size"
