@@ -9,7 +9,7 @@
         - web_package       httpd
         - web_service       httpd
         - web_config_file   /etc/httpd/conf/httpd.conf
-        - firewall_service  httpd
+        - firewall_service  http
     - Ensure that the web server package is installed
     - Ensure that the service is enabled and started
     - Open a port in the firewalld firewall
