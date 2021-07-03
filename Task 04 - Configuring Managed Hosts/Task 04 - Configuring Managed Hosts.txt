@@ -3,3 +3,4 @@
     - Creating a user with the name ansible
     - Creating a sudo configuration that allows user ansible to run tasks with root privileges
     - As the last command in this script, an ad-hoc command should be used to call the appropriate module to test connectivity to the remote hosts.
+    - ensure the /etc/hosts is populated
